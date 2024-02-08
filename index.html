@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f7f7f7;
+        }
+        .container {
+            text-align: center;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 18px;
+            border: 2px solid #000;
+            background-color: #fff;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .button:hover {
+            transform: scale(1.1);
+        }
+        .button.no {
+            position: relative;
+            animation: slide 3s infinite alternate;
+        }
+        .button.disabled {
+            pointer-events: none;
+        }
+        @keyframes slide {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(50px, 50px); }
+            50% { transform: translate(100px, -50px); }
+            75% { transform: translate(-50px, 100px); }
+            100% { transform: translate(-100px, -100px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Will You Be My Valentine?</h1>
+        <button class="button" id="yesBtn">Yes</button>
+        <button class="button no" id="noBtn">No</button>
+    </div>
+
+    <script>
+    const yesBtn = document.getElementById('yesBtn');
+
+    yesBtn.addEventListener('click', function() {
+        alert('Yay! I\'m so happy! ❤️'); /* Unicode characters for heart */
+        window.location.href = 'cats_in_love.html';
+    });
+
+    const noBtn = document.getElementById('noBtn');
+
+    noBtn.addEventListener('mouseover', function() {
+        const randomX = Math.random() * 200 - 100;
+        const randomY = Math.random() * 200 - 100;
+        noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+    });
+
+    noBtn.addEventListener('click', function() {
+        noBtn.classList.add('disabled');
+    });
+</script>
+
+</body>
+</html>
